@@ -1,0 +1,15 @@
+@import "font-face";
+@import "variables";
+@import "mixins";
+@import "scaffolding";
+
+// Common classes
+@import "blocks/common/button";
+@import "blocks/common/visually-hidden";
+@import "blocks/common/page-header";
+@import "blocks/common/main";
+@import "blocks/common/page-footer";
+
+
+// Index classes
+// @import "blocks/index/reasons-header";
