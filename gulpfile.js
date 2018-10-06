@@ -1,20 +1,21 @@
 "use strict";
 
-var gulp = require("gulp");
-var sass = require("gulp-sass");
-var plumber = require("gulp-plumber");
-var postcss = require("gulp-postcss");
-var autoprefixer = require("autoprefixer");
-var server = require("browser-sync").create();
-var mqpacker = require("css-mqpacker");
-var minify = require("gulp-csso");
-var rename = require("gulp-rename");
-var imagemin = require("gulp-imagemin");
-var svgstore = require("gulp-svgstore");
-var posthtml = require("gulp-posthtml");
-var include = require("posthtml-include");
-var run = require("run-sequence");
-var del = require("del");
+const gulp = require("gulp");
+const sass = require("gulp-sass");
+const plumber = require("gulp-plumber");
+const postcss = require("gulp-postcss");
+const autoprefixer = require("autoprefixer");
+const server = require("browser-sync").create();
+const mqpacker = require("css-mqpacker");
+const minify = require("gulp-csso");
+const rename = require("gulp-rename");
+const imagemin = require("gulp-imagemin");
+const svgstore = require("gulp-svgstore");
+const posthtml = require("gulp-posthtml");
+const include = require("posthtml-include");
+const run = require("run-sequence");
+const del = require("del");
+const fontgen = require('gulp-fontgen');
 
 gulp.task("style-dev", function() {
     gulp.src("src/sass/style.scss")
@@ -121,4 +122,11 @@ gulp.task("build", function(done) {
         // "sprite",
         "html",
         done)
+});
+
+gulp.task('fontgen', () => {
+  return gulp.src('./fonts/*.{ttf,otf}')
+    .pipe(fontgen({
+      dest: 'src/fonts/'
+    }));
 });
